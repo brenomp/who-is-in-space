@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167C1A532F8A00E65A09 /* Astronaut.swift */; };
+		63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167E1A5330BE00E65A09 /* AstronautList.swift */; };
+		63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A216801A533E5000E65A09 /* NetworkHelper.swift */; };
 		63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C609861A4B3B44004432F3 /* AppDelegate.swift */; };
 		63C6098A1A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C609881A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld */; };
 		63C6098C1A4B3B44004432F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6098B1A4B3B44004432F3 /* ViewController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63A2167C1A532F8A00E65A09 /* Astronaut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
+		63A2167E1A5330BE00E65A09 /* AstronautList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautList.swift; sourceTree = "<group>"; };
+		63A216801A533E5000E65A09 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		63C609811A4B3B44004432F3 /* WhoisInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoisInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C609851A4B3B44004432F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63C609861A4B3B44004432F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,11 +87,14 @@
 			children = (
 				63C609861A4B3B44004432F3 /* AppDelegate.swift */,
 				63C6098B1A4B3B44004432F3 /* ViewController.swift */,
+				63A216801A533E5000E65A09 /* NetworkHelper.swift */,
 				63C6098D1A4B3B44004432F3 /* Main.storyboard */,
 				63C609901A4B3B44004432F3 /* Images.xcassets */,
 				63C609921A4B3B44004432F3 /* LaunchScreen.xib */,
 				63C609881A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld */,
 				63C609841A4B3B44004432F3 /* Supporting Files */,
+				63A2167C1A532F8A00E65A09 /* Astronaut.swift */,
+				63A2167E1A5330BE00E65A09 /* AstronautList.swift */,
 			);
 			path = WhoisInSpace;
 			sourceTree = "<group>";
@@ -218,6 +227,9 @@
 				63C6098C1A4B3B44004432F3 /* ViewController.swift in Sources */,
 				63C6098A1A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld in Sources */,
 				63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */,
+				63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */,
+				63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */,
+				63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +423,7 @@
 				63C609A51A4B3B45004432F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63C609A61A4B3B45004432F3 /* Build configuration list for PBXNativeTarget "WhoisInSpaceTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +432,7 @@
 				63C609A81A4B3B45004432F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
