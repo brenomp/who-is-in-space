@@ -11,7 +11,7 @@ import UIKit
 
 class NetworkHelper
 {
-    class func getJsonData(tableView: UITableView, completionHandler:(jsonResult: NSDictionary) ->(Void))
+    class func getJsonData(tableView: UITableView, completionHandler:(listOfPeople: [Astronaut]) ->(Void))
     {
         let baseURL = NSURL(string: "http://api.open-notify.org/")
         let astronautEndPoint = "astros.json"
@@ -28,7 +28,7 @@ class NetworkHelper
                 var currentAstronautList = AstronautList(peopleInSpaceDict: peopleInSpaceDict)
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    //listOfAstronaut = currentAstronautList.listOfAstronautsInSpace!
+                    completionHandler(listOfPeople: currentAstronautList.listOfAstronautsInSpace!)
                     tableView.reloadData()
                 })
                 
