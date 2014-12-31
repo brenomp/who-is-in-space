@@ -24,28 +24,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        NetworkHelper.getJsonData(self.tableView, completionHandler: { (listOfPeople) -> (Void) in
-            self.listOfAstronaut = listOfPeople
-        })
-        
+    
         self.whoIsInSpaceAPI.setup(self.tableView)
-        
-        
-        
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.listOfAstronaut.count
+        return self.whoIsInSpaceAPI.astroList.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as UITableViewCell
-        var data = self.listOfAstronaut[indexPath.row]
+        var data = self.whoIsInSpaceAPI.astroList[indexPath.row]
         cell.textLabel?.text = data.name as String
         
         
