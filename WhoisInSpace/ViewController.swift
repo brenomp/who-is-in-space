@@ -13,6 +13,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
+    let whoIsInSpaceAPI = WhoIsInSpaceAPI()
+    
     var listOfAstronaut: [Astronaut] = []
     
     
@@ -22,9 +24,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
         NetworkHelper.getJsonData(self.tableView, completionHandler: { (listOfPeople) -> (Void) in
             self.listOfAstronaut = listOfPeople
         })
+        
+        self.whoIsInSpaceAPI.setup(self.tableView)
+        
+        
         
     }
     
@@ -40,6 +47,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as UITableViewCell
         var data = self.listOfAstronaut[indexPath.row]
         cell.textLabel?.text = data.name as String
+        
+        
         
         return cell
     }
