@@ -23,10 +23,14 @@ class WhoIsInSpaceAPI
     func setup(tableView: UITableView)
     {
         println("In The App Setup")
-        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "astros.json", tableView: tableView) { (jsonData) -> (Void) in
+        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "astros.json") { (jsonData) -> (Void) in
             self.astroDictionary = jsonData
             //println(self.astroDictionary)
             self.astroList = self.createListOfAstronauts(jsonData)
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                tableView.reloadData()
+            })
         }
     }
     
@@ -45,13 +49,32 @@ class WhoIsInSpaceAPI
     }
     
     
-    func currentLoctionOfISS() -> (Double, Double)
+    func currentLoctionOfISS(completionHandler:(location:(Double, Double, Int)) ->(Void))
     {
-//        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-now.json", tableView: <#UITableView#>) { (jsonData) -> (Void) in
-//            
-//        }
+        var longitude: Double?
+        var latitude: Double?
+        var time: Int?
+        var currentLocation: (Double?, Double?, Int?)
         
-        return (0.0, 0.0)
+        
+        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-now.json") { (jsonData) -> (Void) in
+            
+            var position = jsonData["iss_position"] as NSDictionary
+
+            longitude = position["longitude"] as? Double
+            latitude = position["latitude"] as? Double
+            time = jsonData["timestamp"] as? Int
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completionHandler(location: (longitude!, latitude!, time!))
+            })
+            
+        }
+        
+        
+        
+        
+        
     }
     
     

@@ -92,7 +92,6 @@
 				63FD30C51A5460BB00B00150 /* View */,
 				63FD30C41A5460B200B00150 /* Model */,
 				63C609861A4B3B44004432F3 /* AppDelegate.swift */,
-				63C6098D1A4B3B44004432F3 /* Main.storyboard */,
 				63C609901A4B3B44004432F3 /* Images.xcassets */,
 				63C609921A4B3B44004432F3 /* LaunchScreen.xib */,
 				63C609881A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld */,
@@ -147,6 +146,7 @@
 		63FD30C51A5460BB00B00150 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				63C6098D1A4B3B44004432F3 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";

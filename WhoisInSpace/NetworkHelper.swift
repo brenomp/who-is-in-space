@@ -13,7 +13,7 @@ class NetworkHelper
 {
     
     
-    class func downloadJSONData(baseURL: String, endPoint: String,  tableView: UITableView, completionHandler:(jsonData:NSDictionary) ->(Void))
+    class func downloadJSONData(baseURL: String, endPoint: String, completionHandler:(jsonData:NSDictionary) ->(Void))
     {
         // Building the api url
         let baseURL = NSURL(string: baseURL)
@@ -31,7 +31,7 @@ class NetworkHelper
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completionHandler(jsonData: jsonDictionary)
-                    tableView.reloadData()
+                    //tableView.reloadData()
                 })
                 
             }
