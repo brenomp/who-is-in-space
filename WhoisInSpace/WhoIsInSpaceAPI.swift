@@ -30,7 +30,7 @@ class WhoIsInSpaceAPI
         }
     }
     
-    func createListOfAstronauts(jsonDictionary: NSDictionary) -> [Astronaut]
+    private func createListOfAstronauts(jsonDictionary: NSDictionary) -> [Astronaut]
     {
         let astronautArray = jsonDictionary["people"] as NSArray
         var astronautList: [Astronaut] = []
@@ -43,6 +43,17 @@ class WhoIsInSpaceAPI
         
         return astronautList
     }
+    
+    
+    func currentLoctionOfISS() -> (Double, Double)
+    {
+//        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-now.json", tableView: <#UITableView#>) { (jsonData) -> (Void) in
+//            
+//        }
+        
+        return (0.0, 0.0)
+    }
+    
     
     
     

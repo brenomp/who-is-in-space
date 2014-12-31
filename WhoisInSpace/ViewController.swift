@@ -26,6 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
     
         self.whoIsInSpaceAPI.setup(self.tableView)
+        
     }
     
     
