@@ -26,6 +26,8 @@ class NetworkHelper
         let task = session.downloadTaskWithURL(fullApiURL!, completionHandler: { (location, response, error) -> Void in
             if error == nil
             {
+                
+                println(response)
                 let dataObject = NSData(contentsOfURL: location)
                 let jsonDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
                 

@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
     
         self.whoIsInSpaceAPI.setup(self.tableView)
-        self.whoIsInSpaceAPI.currentLoctionOfISS { (location) -> (Void) in
+        self.whoIsInSpaceAPI.getCurrentLoctionOfISS { (location) -> (Void) in
             self.latitudeLabel.text = "\(location.latitude)"
             self.longitudeLabel.text = "\(location.longitude)"
             self.issCurrentTimeLabel.text = location.time

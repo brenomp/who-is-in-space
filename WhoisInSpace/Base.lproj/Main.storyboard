@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="mK2-DG-sVz">
             <objects>
                 <viewController id="N61-me-isZ" customClass="HomeViewController" customModule="WhoisInSpace" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,6 +72,9 @@
                                 <state key="normal" title="Refresh">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="N61-me-isZ" eventType="touchUpInside" id="dcF-9w-8R0"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="600" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jP-qa-ng4">
                                 <rect key="frame" x="286" y="375" width="29" height="21"/>
@@ -102,7 +105,13 @@
                             <constraint firstItem="4jP-qa-ng4" firstAttribute="leading" secondItem="5TE-Tg-HzQ" secondAttribute="trailing" constant="17" id="w9M-cB-EGv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="UIr-T6-T3t"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="UIr-T6-T3t"/>
+                    <connections>
+                        <outlet property="durationLabel" destination="4jP-qa-ng4" id="u0D-5Q-lkc"/>
+                        <outlet property="latitudeLabel" destination="Avt-Dq-78E" id="fqj-T2-S8a"/>
+                        <outlet property="longitudeLabel" destination="dtC-hT-JgM" id="CZH-9N-GwK"/>
+                        <outlet property="overHeadDateLabel" destination="Vgl-B6-YQJ" id="1fV-H9-kbv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kn-Hp-tzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,24 +151,6 @@
             </objects>
             <point key="canvasLocation" x="5850" y="336"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="C61-gM-IvQ">
-            <objects>
-                <viewController id="0Kf-Iw-dtW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kM3-jL-JtS"/>
-                        <viewControllerLayoutGuide type="bottom" id="YKT-l0-CLD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qcf-xr-pc9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KB9-Y4-CI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6541" y="336"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="thw-iN-xbf">
             <objects>
@@ -179,11 +170,11 @@
             </objects>
             <point key="canvasLocation" x="3561" y="336"/>
         </scene>
-        <!--Item-->
+        <!--Astronauts-->
         <scene sceneID="nCa-S3-AwC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ebn-ma-utw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oRw-Aq-Aoj"/>
+                    <tabBarItem key="tabBarItem" title="Astronauts" id="oRw-Aq-Aoj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bn5-9O-11t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
