@@ -15,14 +15,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var issCurrentTimeLabel: UILabel!
     
     let whoIsInSpaceAPI = WhoIsInSpaceAPI()
     
     var listOfAstronaut: [Astronaut] = []
-    var currentISSLocation : (Double, Double, Int)?
+    var currentISSLocation : (Double, Double, String)?
     var currentISSLongitude: Double?
     var currentISSLatitude: Double?
-    var currentISSTime: Int?
+    var currentISSTime: String?
     
     
     
@@ -35,8 +36,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         self.whoIsInSpaceAPI.setup(self.tableView)
         self.whoIsInSpaceAPI.currentLoctionOfISS { (location) -> (Void) in
-            self.latitudeLabel.text = "\(location.1)"
-            self.longitudeLabel.text = "\(location.0)"
+            self.latitudeLabel.text = "\(location.latitude)"
+            self.longitudeLabel.text = "\(location.longitude)"
+            self.issCurrentTimeLabel.text = location.time
         }
         
         
