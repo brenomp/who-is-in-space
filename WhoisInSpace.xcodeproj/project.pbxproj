@@ -10,9 +10,13 @@
 		63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167C1A532F8A00E65A09 /* Astronaut.swift */; };
 		63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167E1A5330BE00E65A09 /* AstronautList.swift */; };
 		63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A216801A533E5000E65A09 /* NetworkHelper.swift */; };
+		63B93F7A1A5ED3EA0097354A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93F791A5ED3EA0097354A /* HomeViewController.swift */; };
+		63B93F7C1A5ED41C0097354A /* AstronautViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93F7B1A5ED41C0097354A /* AstronautViewController.swift */; };
+		63B93F7E1A5ED4550097354A /* AatronautDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93F7D1A5ED4550097354A /* AatronautDetailViewController.swift */; };
+		63B93F801A5EFED90097354A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B93F7F1A5EFED90097354A /* CoreLocation.framework */; };
+		63B93F841A5F4CA80097354A /* AppLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93F831A5F4CA80097354A /* AppLoader.swift */; };
 		63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C609861A4B3B44004432F3 /* AppDelegate.swift */; };
 		63C6098A1A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C609881A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld */; };
-		63C6098C1A4B3B44004432F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6098B1A4B3B44004432F3 /* ViewController.swift */; };
 		63C6098F1A4B3B44004432F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C6098D1A4B3B44004432F3 /* Main.storyboard */; };
 		63C609911A4B3B44004432F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C609901A4B3B44004432F3 /* Images.xcassets */; };
 		63C609941A4B3B44004432F3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C609921A4B3B44004432F3 /* LaunchScreen.xib */; };
@@ -34,11 +38,15 @@
 		63A2167C1A532F8A00E65A09 /* Astronaut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		63A2167E1A5330BE00E65A09 /* AstronautList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautList.swift; sourceTree = "<group>"; };
 		63A216801A533E5000E65A09 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		63B93F791A5ED3EA0097354A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		63B93F7B1A5ED41C0097354A /* AstronautViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautViewController.swift; sourceTree = "<group>"; };
+		63B93F7D1A5ED4550097354A /* AatronautDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AatronautDetailViewController.swift; sourceTree = "<group>"; };
+		63B93F7F1A5EFED90097354A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		63B93F831A5F4CA80097354A /* AppLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLoader.swift; sourceTree = "<group>"; };
 		63C609811A4B3B44004432F3 /* WhoisInSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoisInSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C609851A4B3B44004432F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63C609861A4B3B44004432F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C609891A4B3B44004432F3 /* WhoisInSpace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhoisInSpace.xcdatamodel; sourceTree = "<group>"; };
-		63C6098B1A4B3B44004432F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63C6098E1A4B3B44004432F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63C609901A4B3B44004432F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		63C609931A4B3B44004432F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -53,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B93F801A5EFED90097354A /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +78,7 @@
 		63C609781A4B3B44004432F3 = {
 			isa = PBXGroup;
 			children = (
+				63B93F7F1A5EFED90097354A /* CoreLocation.framework */,
 				63C609831A4B3B44004432F3 /* WhoisInSpace */,
 				63C6099C1A4B3B45004432F3 /* WhoisInSpaceTests */,
 				63C609821A4B3B44004432F3 /* Products */,
@@ -92,7 +102,6 @@
 				63FD30C51A5460BB00B00150 /* View */,
 				63FD30C41A5460B200B00150 /* Model */,
 				63C609861A4B3B44004432F3 /* AppDelegate.swift */,
-				63C6098D1A4B3B44004432F3 /* Main.storyboard */,
 				63C609901A4B3B44004432F3 /* Images.xcassets */,
 				63C609921A4B3B44004432F3 /* LaunchScreen.xib */,
 				63C609881A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld */,
@@ -147,6 +156,7 @@
 		63FD30C51A5460BB00B00150 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				63C6098D1A4B3B44004432F3 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -154,7 +164,10 @@
 		63FD30C61A5460C100B00150 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				63C6098B1A4B3B44004432F3 /* ViewController.swift */,
+				63B93F791A5ED3EA0097354A /* HomeViewController.swift */,
+				63B93F7B1A5ED41C0097354A /* AstronautViewController.swift */,
+				63B93F7D1A5ED4550097354A /* AatronautDetailViewController.swift */,
+				63B93F831A5F4CA80097354A /* AppLoader.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -259,13 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63C6098C1A4B3B44004432F3 /* ViewController.swift in Sources */,
 				63C6098A1A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld in Sources */,
 				63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */,
+				63B93F7C1A5ED41C0097354A /* AstronautViewController.swift in Sources */,
+				63B93F7A1A5ED3EA0097354A /* HomeViewController.swift in Sources */,
+				63B93F841A5F4CA80097354A /* AppLoader.swift in Sources */,
 				63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */,
 				63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */,
 				63FD30C11A54609600B00150 /* WhoIsInSpaceAPI.swift in Sources */,
 				63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */,
+				63B93F7E1A5ED4550097354A /* AatronautDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
