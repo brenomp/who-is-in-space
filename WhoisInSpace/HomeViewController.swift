@@ -33,7 +33,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
         super.viewDidLoad()
         
        
-   
+        NSNotificationCenter.defaultCenter().addObserverForName(self.whosInSpaceApi.kLocationDidUpdateNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+            if let userInfo = note.userInfo as? [String : Double] {
+                if let lat = userInfo["lat"] {
+                    self.latitudeLabel.text = self.formatDoubleString(lat, precision: 4)
+                    println("updated lat: \(self.formatDoubleString(lat, precision: 4))")
+                }
+                if let lon = userInfo["lon"] {
+                    self.longitudeLabel.text = self.formatDoubleString(lon, precision: 4)
+                    println("updated lon: \(self.formatDoubleString(lon, precision: 4))")
+                }
+            }
+        }
        
         
         
