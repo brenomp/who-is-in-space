@@ -27,7 +27,6 @@ class NetworkHelper
             if error == nil
             {
                 
-                println(response)
                 let dataObject = NSData(contentsOfURL: location)
                 let jsonDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
                 

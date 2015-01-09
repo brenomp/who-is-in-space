@@ -32,17 +32,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     {
         super.viewDidLoad()
         
-        if CLLocationManager.locationServicesEnabled()
-        {
-            self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.startUpdatingLocation()
-        }
-        else
-        {
-            println("Location services are not enabled")
-        }
+       
    
        
         
@@ -54,35 +44,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 
         }
         
-        self.whosInSpaceApi.getOverHeadPass("\(self.myLatitude)", longitude: "\(self.myLongitude)") { (dateTime) -> (Void) in
-            println(dateTime)
-        }
+//        self.whosInSpaceApi.getOverHeadPass("\(self.myLatitude)", longitude: "\(self.myLongitude)") { (dateTime) -> (Void) in
+//            println(dateTime)
+//        }
         
+        self.whosInSpaceApi.getMyLocation { (myCords) -> (Void) in
+            println(myCords.latitude)
+            println(myCords.longitude)
+        }
      
 
     }
 
     
     
-//MARK: Locations Delegate methods
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
-    {
-        self.locationManager.stopUpdatingLocation()
-        
-        if error != nil
-        {
-            println("There was an error getting the device location: \(error)")
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!)
-    {
-        self.myLatitude  = self.locationManager.location.coordinate.latitude
-        self.myLongitude = self.locationManager.location.coordinate.longitude
-        
 
-        
-    }
     
     
 //MARK: IBActions

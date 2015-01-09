@@ -8,26 +8,79 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
-
-class WhoIsInSpaceAPI
+class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
 {
     var astroDictionary: NSDictionary?
     var astroList = [Astronaut]()
     
-    init()
+    let locationManager = CLLocationManager()
+    
+    var myLatitude: CLLocationDegrees?
+    var myLongitude: CLLocationDegrees?
+    
+    override init()
     {
-        
+        super.init()
+        self.setup()
     }
     
-    func setup(tableView: UITableView)
+    func setup()
     {
         // Does the initial setup for the app
         println("In The App Setup")
+        
+        if CLLocationManager.locationServicesEnabled()
+        {
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.startUpdatingLocation()
+        }
+        else
+        {
+            println("Location services are not enabled")
+        }
      
     }
     
+    
+    
+//MARK: Locations Delegate methods
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
+    {
+        self.locationManager.stopUpdatingLocation()
+        
+        if error != nil
+        {
+            println("There was an error getting the device location: \(error)")
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!)
+    {
+        self.myLatitude  = self.locationManager.location.coordinate.latitude
+        self.myLongitude = self.locationManager.location.coordinate.longitude
+        
+        if self.myLatitude != nil && self.myLongitude != nil
+        {
+            
+        }
+        
+    }
+    
 //MARK:
+    
+    
+    
+    func getMyLocation(completionHandler:(myCords:(longitude: String, latitude: String)) ->(Void))
+    {
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            completionHandler(myCords: ("\(self.myLatitude)", "\(self.myLongitude)"))
+        })
+    }
     
     // Gets the current locations from the api and then returns a tuple
     func getCurrentLoctionOfISS(completionHandler:(location:(longitude: Double, latitude: Double, time: String)) ->(Void))

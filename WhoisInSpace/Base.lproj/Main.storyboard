@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j5m-U7-haB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vyg-3F-03s">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -151,6 +151,35 @@
             </objects>
             <point key="canvasLocation" x="5850" y="336"/>
         </scene>
+        <!--App Loader-->
+        <scene sceneID="jxs-rI-86K">
+            <objects>
+                <viewController id="vyg-3F-03s" customClass="AppLoader" customModule="WhoisInSpace" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BSS-6f-rIF"/>
+                        <viewControllerLayoutGuide type="bottom" id="dbg-tf-CSP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rnc-K4-pIw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJg-eR-ouk">
+                                <rect key="frame" x="83" y="273" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="j5m-U7-haB" kind="show" id="yRe-hk-7MR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7f-l6-Gsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2850" y="334"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="thw-iN-xbf">
             <objects>
@@ -168,7 +197,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="3561" y="336"/>
+            <point key="canvasLocation" x="3637" y="336"/>
         </scene>
         <!--Astronauts-->
         <scene sceneID="nCa-S3-AwC">
