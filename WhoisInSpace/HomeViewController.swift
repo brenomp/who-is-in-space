@@ -24,15 +24,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     var issCurrentLon: Double?
     var issCurrentTime: String?
     
-    var myLatitude: CLLocationDegrees?
-    var myLongitude: CLLocationDegrees?
+    var myLatitude: Double?
+    var myLongitude: Double?
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-       
+        NSNotificationCenter.defaultCenter().addObserverForName(self.whosInSpaceApi.kLocationDidUpdateNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+            if let userInfo = note.userInfo as? [String:Double]
+            {
+                if userInfo["lat"] != nil && userInfo["lon"] != nil
+                {
+                    var lat = userInfo["lat"]!
+                    var lon = userInfo["lon"]!
+                    
+                    println("Users lat is: \(lat)")
+                    self.myLatitude = lat
+                    println("Users lon is: \(lon)")
+                    self.myLongitude = lon
+                }
+ 
+                
+            }
+            
+
+        }
    
        
         
@@ -44,15 +62,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 
         }
         
+        
 //        self.whosInSpaceApi.getOverHeadPass("\(self.myLatitude)", longitude: "\(self.myLongitude)") { (dateTime) -> (Void) in
 //            println(dateTime)
 //        }
         
         self.whosInSpaceApi.getMyLocation { (myCords) -> (Void) in
-            println(myCords.latitude)
-            println(myCords.longitude)
+           println(myCords.latitude)
+            
+            
         }
-     
 
     }
 

@@ -16,6 +16,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     var astroList = [Astronaut]()
     
     let locationManager = CLLocationManager()
+    let kLocationDidUpdateNotification = "locationDidUpdateNotification"
     
     var myLatitude: CLLocationDegrees?
     var myLongitude: CLLocationDegrees?
@@ -35,8 +36,14 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         {
             self.locationManager.delegate = self
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.requestWhenInUseAuthorization()
-            self.locationManager.startUpdatingLocation()
+            if CLLocationManager.authorizationStatus() == .Authorized || CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse
+            {
+                self.locationManager.startUpdatingLocation()
+            }
+            else
+            {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
         }
         else
         {
@@ -48,6 +55,23 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     
     
 //MARK: Locations Delegate methods
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+    {
+        switch status {
+        case .Authorized:
+            self.locationManager.startUpdatingLocation()
+        case .AuthorizedWhenInUse:
+            self.locationManager.startUpdatingLocation()
+        case .Denied:
+            println("Location services disabled for this app")
+        case .NotDetermined:
+            self.locationManager.requestWhenInUseAuthorization()
+        case .Restricted:
+            println("Location servers restricted on this device")
+        }
+    }
+    
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
     {
         self.locationManager.stopUpdatingLocation()
@@ -65,8 +89,16 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         
         if self.myLatitude != nil && self.myLongitude != nil
         {
-            
+            NSNotificationCenter.defaultCenter().postNotificationName(self.kLocationDidUpdateNotification, object: nil, userInfo: ["lat": self.myLatitude!, "lon": self.myLongitude!])
         }
+        
+        if self.locationManager.location.horizontalAccuracy <= 50
+        {
+            self.locationManager.stopUpdatingLocation()
+            println("stop updating location")
+        }
+        
+        
         
     }
     
@@ -78,9 +110,29 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     {
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            completionHandler(myCords: ("\(self.myLatitude)", "\(self.myLongitude)"))
+            if self.myLatitude != nil && self.myLongitude != nil
+            {
+                completionHandler(myCords: ("\(self.myLatitude)", "\(self.myLongitude)"))
+            }
+            else
+            {
+                
+            }
         })
     }
+    
+//    func getOverHeadPass(latitude: String, longitude: String, completionHandler:(dateTime:[NSDictionary]) ->(Void))
+//    {
+//        println("In the overHEAD pass method")
+//        
+//        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-pass.json?lat=\(latitude)&lon=\(longitude)") { (jsonData) -> (Void) in
+//            var responseArray = jsonData["response"] as [NSDictionary]
+//            println("DATA FROM OVERHEAD PASS: \(jsonData)")
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                completionHandler(dateTime: responseArray)
+//            })
+//        }
+//    }
     
     // Gets the current locations from the api and then returns a tuple
     func getCurrentLoctionOfISS(completionHandler:(location:(longitude: Double, latitude: Double, time: String)) ->(Void))
@@ -106,17 +158,6 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
             })
         }
         
-    }
-    
-    func getOverHeadPass(latitude: String, longitude: String, completionHandler:(dateTime:[NSDictionary]) ->(Void))
-    {
-        println("In the overHEAD pass method")
-        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-pass.json?lat=\(latitude)&lon=\(longitude)") { (jsonData) -> (Void) in
-            var responseArray = jsonData["response"] as [NSDictionary]
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completionHandler(dateTime: responseArray)
-            })
-        }
     }
     
     func getAstronautList(tableView: UITableView)
