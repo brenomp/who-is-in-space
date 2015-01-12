@@ -17,16 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-au-N82">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-120.0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avt-Dq-78E">
                                 <rect key="frame" x="66" y="182" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-120.0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtC-hT-JgM">
                                 <rect key="frame" x="455" y="182" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-cZ-NHW">
@@ -36,7 +39,7 @@
                                     <constraint firstAttribute="width" constant="63" id="riD-x8-ira"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxj-TZ-MHZ">
@@ -46,40 +49,31 @@
                                     <constraint firstAttribute="width" constant="63" id="Bdr-Jo-Fm0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The ISS will be over you on:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWG-CH-G5c">
                                 <rect key="frame" x="169" y="286" width="268" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue, 06 Jan 2015 17:10:19 GMT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgl-B6-YQJ">
                                 <rect key="frame" x="169" y="331" width="245" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TE-Tg-HzQ">
                                 <rect key="frame" x="169" y="368" width="100" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUp-1g-ZFQ">
-                                <rect key="frame" x="277" y="28" width="53" height="30"/>
-                                <state key="normal" title="Refresh">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="refreshButtonPressed:" destination="N61-me-isZ" eventType="touchUpInside" id="dcF-9w-8R0"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="600" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jP-qa-ng4">
                                 <rect key="frame" x="286" y="375" width="29" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-Sa-1xJ">
@@ -88,32 +82,49 @@
                                     <constraint firstAttribute="width" constant="42" id="aqz-eF-XkU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUp-1g-ZFQ">
+                                <rect key="frame" x="279" y="53" width="24" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8q8-n5-aOQ"/>
+                                    <constraint firstAttribute="width" constant="24" id="iNe-a0-mhG"/>
+                                </constraints>
+                                <state key="normal" image="refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="N61-me-isZ" eventType="touchUpInside" id="dcF-9w-8R0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Avt-Dq-78E" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="162" id="2Rv-j9-vT4"/>
                             <constraint firstAttribute="centerX" secondItem="bWG-CH-G5c" secondAttribute="centerX" constant="-3" id="7z2-Je-iRZ"/>
-                            <constraint firstItem="TUp-1g-ZFQ" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="8" id="HUS-vp-FWl"/>
                             <constraint firstItem="dtC-hT-JgM" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="162" id="JL1-8o-bTP"/>
                             <constraint firstItem="bvp-Sa-1xJ" firstAttribute="top" secondItem="Vgl-B6-YQJ" secondAttribute="bottom" constant="23" id="Jhq-vc-Xty"/>
                             <constraint firstAttribute="centerX" secondItem="Vgl-B6-YQJ" secondAttribute="centerX" constant="8.5" id="Lvy-eU-lnX"/>
                             <constraint firstAttribute="centerY" secondItem="bWG-CH-G5c" secondAttribute="centerY" constant="0.5" id="PFG-Fi-Q3y"/>
                             <constraint firstAttribute="centerY" secondItem="4jP-qa-ng4" secondAttribute="centerY" constant="-85.5" id="PlA-dt-flh"/>
                             <constraint firstItem="Vgl-B6-YQJ" firstAttribute="top" secondItem="bWG-CH-G5c" secondAttribute="bottom" constant="18" id="Vix-Q4-5qJ"/>
+                            <constraint firstItem="7bG-2R-aDe" firstAttribute="top" secondItem="NqY-au-N82" secondAttribute="bottom" constant="-49" id="X0R-iQ-zDT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NqY-au-N82" secondAttribute="trailing" constant="-16" id="Xqt-xH-jI0"/>
                             <constraint firstItem="bvp-Sa-1xJ" firstAttribute="leading" secondItem="4jP-qa-ng4" secondAttribute="trailing" constant="8" id="Yct-9H-NUO"/>
+                            <constraint firstItem="TUp-1g-ZFQ" firstAttribute="centerY" secondItem="NqY-au-N82" secondAttribute="centerY" constant="-236.5" id="ZKf-7x-aVi"/>
                             <constraint firstAttribute="centerX" secondItem="5TE-Tg-HzQ" secondAttribute="centerX" constant="81" id="bcl-7g-pqr"/>
                             <constraint firstItem="5TE-Tg-HzQ" firstAttribute="top" secondItem="Vgl-B6-YQJ" secondAttribute="bottom" constant="16" id="dDp-n4-JLW"/>
-                            <constraint firstAttribute="centerX" secondItem="TUp-1g-ZFQ" secondAttribute="centerX" constant="-3.5" id="eDq-3n-O4l"/>
                             <constraint firstItem="FFx-cZ-NHW" firstAttribute="leading" secondItem="B5x-1D-3B2" secondAttribute="leadingMargin" constant="60" id="fDG-4D-6y8"/>
                             <constraint firstItem="Kxj-TZ-MHZ" firstAttribute="top" secondItem="dtC-hT-JgM" secondAttribute="bottom" constant="2" id="gQK-9V-SE2"/>
+                            <constraint firstItem="TUp-1g-ZFQ" firstAttribute="centerX" secondItem="NqY-au-N82" secondAttribute="centerX" constant="-9" id="gdS-a2-qY1"/>
                             <constraint firstItem="FFx-cZ-NHW" firstAttribute="top" secondItem="Avt-Dq-78E" secondAttribute="bottom" constant="8" id="hzP-HM-2VH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dtC-hT-JgM" secondAttribute="trailing" constant="50" id="p8M-Iw-FsD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kxj-TZ-MHZ" secondAttribute="trailing" constant="55" id="r94-WU-TIq"/>
+                            <constraint firstItem="NqY-au-N82" firstAttribute="leading" secondItem="B5x-1D-3B2" secondAttribute="leadingMargin" constant="-16" id="vdd-sP-vez"/>
                             <constraint firstItem="Avt-Dq-78E" firstAttribute="leading" secondItem="B5x-1D-3B2" secondAttribute="leadingMargin" constant="50" id="vyh-rY-tLf"/>
                             <constraint firstItem="4jP-qa-ng4" firstAttribute="leading" secondItem="5TE-Tg-HzQ" secondAttribute="trailing" constant="17" id="w9M-cB-EGv"/>
+                            <constraint firstItem="NqY-au-N82" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="-20" id="y6b-hf-I7B"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="UIr-T6-T3t"/>
@@ -126,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kn-Hp-tzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4373" y="336"/>
+            <point key="canvasLocation" x="4373" y="315"/>
         </scene>
         <!--Astronaut View Controller-->
         <scene sceneID="9sO-uC-naU">
@@ -185,7 +196,7 @@
         <scene sceneID="nCa-S3-AwC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ebn-ma-utw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Astronauts" id="oRw-Aq-Aoj"/>
+                    <tabBarItem key="tabBarItem" title="Astronauts" selectedImage="Astronaut Icon" id="oRw-Aq-Aoj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bn5-9O-11t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -201,4 +212,9 @@
             <point key="canvasLocation" x="5084" y="336"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Astronaut Icon" width="199" height="155"/>
+        <image name="Background" width="1242" height="2208"/>
+        <image name="refresh" width="71" height="62"/>
+    </resources>
 </document>

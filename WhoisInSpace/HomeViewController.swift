@@ -89,6 +89,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 //MARK: IBActions
     @IBAction func refreshButtonPressed(sender: AnyObject)
     {
+        self.whosInSpaceApi.getCurrentLoctionOfISS { (location) -> (Void) in
+            self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
+            self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
+            
+
+        }
     }
     
     
