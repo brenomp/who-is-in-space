@@ -7,17 +7,15 @@
 //
 
 import UIKit
-import CoreLocation
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate
+
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
 
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var overHeadDateLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var overheadPassTableView: UITableView!
     
-    let locationManager = CLLocationManager()
     let whosInSpaceApi = WhoIsInSpaceAPI()
     
     var issCurrentLat: Double?
@@ -27,10 +25,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     var myLatitude: Double?
     var myLongitude: Double?
     
+    var overheadPassList = [NSDictionary]()
+    var riseTime: String?
+    var duration: String?
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.overheadPassTableView.dataSource = self
+        self.overheadPassTableView.delegate = self
         
         NSNotificationCenter.defaultCenter().addObserverForName(self.whosInSpaceApi.kLocationDidUpdateNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
             if let userInfo = note.userInfo as? [String:Double]
@@ -47,20 +51,19 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
                     
                     // I think this network call is called 3 or more times.  Not sure how to fix it.
                     self.whosInSpaceApi.getOverHeadPass("\(lat)", longitude: "\(lon)", completionHandler: { (dateTime) -> (Void) in
-                        var riseTime = self.whosInSpaceApi.dateStringFromUnixtime(dateTime[0]["risetime"]! as Int)
-                        var duration = dateTime[0]["duration"]! as Int
-                        self.overHeadDateLabel.text = "\(riseTime)"
-                        self.durationLabel.text = "\(duration)"
+                        self.overheadPassList = dateTime
+//                        self.riseTime = self.whosInSpaceApi.dateStringFromUnixtime(dateTime[0]["risetime"]! as Int)
+//                        self.duration = dateTime[0]["duration"]! as? String
+                        self.overheadPassTableView.reloadData()
+                        
                     })
                 }
 
-                
             }
-            
 
         }
    
-        
+        // Gets the current location of the international space station
         self.whosInSpaceApi.getCurrentLoctionOfISS { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
@@ -68,22 +71,24 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 
         }
         
-        
-//        self.whosInSpaceApi.getOverHeadPass("\(self.myLatitude)", longitude: "\(self.myLongitude)") { (dateTime) -> (Void) in
-//            println(dateTime)
-//        }
-        
-        self.whosInSpaceApi.getMyLocation { (myCords) -> (Void) in
-           println(myCords.latitude)
-            
-            
-        }
 
     }
 
     
     
-
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.overheadPassList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        var cell = self.overheadPassTableView.dequeueReusableCellWithIdentifier("OVERHEAD_PASS_CELL", forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel?.text = self.overheadPassList[indexPath.row]["risetime"]! as? String
+//        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
+    
     
     
 //MARK: IBActions
