@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>21BBAFE7-E750-420D-A1F9-90435D16443B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WhoisInSpace</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>304AF583E3CF1700C37D12F777B926261FCF6792</key>
+		<string>https://github.com/kyp12/who-is-in-space.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WhoisInSpace.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>304AF583E3CF1700C37D12F777B926261FCF6792</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kyp12/who-is-in-space.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>304AF583E3CF1700C37D12F777B926261FCF6792</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>304AF583E3CF1700C37D12F777B926261FCF6792</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WhoisInSpace</string>
+		</dict>
+	</array>
+</dict>
+</plist>
