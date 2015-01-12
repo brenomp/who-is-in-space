@@ -44,16 +44,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
                     self.myLatitude = lat
                     println("Users lon is: \(lon)")
                     self.myLongitude = lon
+                    
+                    // I think this network call is called 3 or more times.  Not sure how to fix it.
+                    self.whosInSpaceApi.getOverHeadPass("\(lat)", longitude: "\(lon)", completionHandler: { (dateTime) -> (Void) in
+                        var riseTime = self.whosInSpaceApi.dateStringFromUnixtime(dateTime[0]["risetime"]! as Int)
+                        var duration = dateTime[0]["duration"]! as Int
+                        self.overHeadDateLabel.text = "\(riseTime)"
+                        self.durationLabel.text = "\(duration)"
+                    })
                 }
- 
+
                 
             }
             
 
         }
    
-       
-        
         
         self.whosInSpaceApi.getCurrentLoctionOfISS { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)

@@ -90,6 +90,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         if self.myLatitude != nil && self.myLongitude != nil
         {
             NSNotificationCenter.defaultCenter().postNotificationName(self.kLocationDidUpdateNotification, object: nil, userInfo: ["lat": self.myLatitude!, "lon": self.myLongitude!])
+            
         }
         
         if self.locationManager.location.horizontalAccuracy <= 50
@@ -121,18 +122,17 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         })
     }
     
-//    func getOverHeadPass(latitude: String, longitude: String, completionHandler:(dateTime:[NSDictionary]) ->(Void))
-//    {
-//        println("In the overHEAD pass method")
-//        
-//        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-pass.json?lat=\(latitude)&lon=\(longitude)") { (jsonData) -> (Void) in
-//            var responseArray = jsonData["response"] as [NSDictionary]
-//            println("DATA FROM OVERHEAD PASS: \(jsonData)")
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                completionHandler(dateTime: responseArray)
-//            })
-//        }
-//    }
+    func getOverHeadPass(latitude: String, longitude: String, completionHandler:(dateTime:[NSDictionary]) ->(Void))
+    {
+        println("In the overHEAD pass method")
+    
+        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-pass.json?lat=\(latitude)&lon=\(longitude)") { (jsonData) -> (Void) in
+           var responseArray = jsonData["response"] as [NSDictionary]
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+               completionHandler(dateTime: responseArray)
+            })
+       }
+    }
     
     // Gets the current locations from the api and then returns a tuple
     func getCurrentLoctionOfISS(completionHandler:(location:(longitude: Double, latitude: Double, time: String)) ->(Void))
@@ -201,7 +201,8 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         let date = NSDate(timeIntervalSince1970: timeInSeconds)
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .MediumStyle
+        dateFormatter.dateStyle = .MediumStyle
+        dateFormatter.timeStyle = .LongStyle
         
         return dateFormatter.stringFromDate(date)
     }

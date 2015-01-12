@@ -40,43 +40,6 @@ class NetworkHelper
         
         task.resume()
     }
-    
-    
-    
-    class func getJsonData(tableView: UITableView, completionHandler:(listOfPeople: [Astronaut]) ->(Void))
-    {
-        let baseURL = NSURL(string: "http://api.open-notify.org/")
-        let astronautEndPoint = "astros.json"
-        let peopleInSpaceURL = NSURL(string: astronautEndPoint, relativeToURL: baseURL)
-        
-        let session = NSURLSession.sharedSession()
-        let task = session.downloadTaskWithURL(peopleInSpaceURL!, completionHandler: { (location, response, error) -> Void in
-            
-            if error == nil
-            {
-                let dataObject = NSData(contentsOfURL: location)
-                let peopleInSpaceDict = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
-                
-                var currentAstronautList = AstronautList(peopleInSpaceDict: peopleInSpaceDict)
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completionHandler(listOfPeople: currentAstronautList.listOfAstronautsInSpace!)
-                    tableView.reloadData()
-                })
-                
-                
-                
-            }
-            else
-            {
-                println(error)
-            }
-        })
-        
-        task.resume()
-    }
-    
-    
 
 }
 
