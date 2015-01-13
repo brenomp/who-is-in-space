@@ -12,6 +12,17 @@ import CoreLocation
 
 class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
 {
+    
+    class var sharedInstance:WhoIsInSpaceAPI
+    {
+        struct Singleton
+        {
+            static let instance = WhoIsInSpaceAPI()
+        }
+        
+        return Singleton.instance
+    }
+    
     var astroDictionary: NSDictionary?
     var astroList = [Astronaut]()
     
@@ -31,7 +42,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     {
         // Does the initial setup for the app
         println("In The App Setup")
-        
+        self.getAstronautList()
         if CLLocationManager.locationServicesEnabled()
         {
             self.locationManager.delegate = self
@@ -160,7 +171,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         
     }
     
-    func getAstronautList(tableView: UITableView)
+    func getAstronautList()
     {
         // Downloads the Json Data from the api on a background thread and then when the data comes backs puts it back onto the main queue
         NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "astros.json") { (jsonData) -> (Void) in
@@ -168,9 +179,9 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
             //println(self.astroDictionary)
             self.astroList = self.createListOfAstronauts(jsonData)
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                tableView.reloadData()
-            })
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                tableView.reloadData()
+//            })
         }
     }
     
@@ -183,8 +194,40 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         
         for astronaut in astronautArray
         {
-            var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String)
-            astronautList.append(newAstronaut)
+            // This will break if new people come to the ISS 
+            switch astronaut["name"] as String
+            {
+                case "Alexander Samokutyaev":
+                    var profileImage = UIImage(named: "Alex")
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+                case "Elena Serova":
+                    var profileImage = UIImage(named: "elena")
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+                case "Barry Wilmore":
+                    var profileImage = UIImage(named: "Barry")
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+                case "Anton Schkaplerov":
+                    var profileImage = UIImage(named: "Anton")
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+                case "Samantha Cristoforetti":
+                    var profileImage = UIImage(named: "Sam")
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+                case "Terry Virts":
+                    var profileImage = UIImage(named: "Terry")
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: astronaut["craft"]! as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+                default:
+                    var profileImage = UIImage(named: "noImage")
+                    var newAstronaut: Astronaut = Astronaut(name: "Jonny Astronaut" as String, craft: "The X-wing" as String, image: profileImage!)
+                    astronautList.append(newAstronaut)
+            }
+            
+            
         }
         
         return astronautList

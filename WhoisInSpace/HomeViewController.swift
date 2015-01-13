@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var durationLabel: UILabel!
     
     let locationManager = CLLocationManager()
-    let whosInSpaceApi = WhoIsInSpaceAPI()
+    //let whosInSpaceApi = WhoIsInSpaceAPI()
     
     var issCurrentLat: Double?
     var issCurrentLon: Double?
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserverForName(self.whosInSpaceApi.kLocationDidUpdateNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
+        NSNotificationCenter.defaultCenter().addObserverForName(WhoIsInSpaceAPI.sharedInstance.kLocationDidUpdateNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
             if let userInfo = note.userInfo as? [String:Double]
             {
                 if userInfo["lat"] != nil && userInfo["lon"] != nil
@@ -46,8 +46,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
                     self.myLongitude = lon
                     
                     // I think this network call is called 3 or more times.  Not sure how to fix it.
-                    self.whosInSpaceApi.getOverHeadPass("\(lat)", longitude: "\(lon)", completionHandler: { (dateTime) -> (Void) in
-                        var riseTime = self.whosInSpaceApi.dateStringFromUnixtime(dateTime[0]["risetime"]! as Int)
+                    WhoIsInSpaceAPI.sharedInstance.getOverHeadPass("\(lat)", longitude: "\(lon)", completionHandler: { (dateTime) -> (Void) in
+                        var riseTime = WhoIsInSpaceAPI.sharedInstance.dateStringFromUnixtime(dateTime[0]["risetime"]! as Int)
                         var duration = dateTime[0]["duration"]! as Int
                         self.overHeadDateLabel.text = "\(riseTime)"
                         self.durationLabel.text = "\(duration)"
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
         }
    
         
-        self.whosInSpaceApi.getCurrentLoctionOfISS { (location) -> (Void) in
+        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
             
@@ -69,15 +69,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
         }
         
         
-//        self.whosInSpaceApi.getOverHeadPass("\(self.myLatitude)", longitude: "\(self.myLongitude)") { (dateTime) -> (Void) in
-//            println(dateTime)
-//        }
-        
-        self.whosInSpaceApi.getMyLocation { (myCords) -> (Void) in
-           println(myCords.latitude)
-            
-            
-        }
+
 
     }
 
@@ -89,7 +81,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 //MARK: IBActions
     @IBAction func refreshButtonPressed(sender: AnyObject)
     {
-        self.whosInSpaceApi.getCurrentLoctionOfISS { (location) -> (Void) in
+        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
             

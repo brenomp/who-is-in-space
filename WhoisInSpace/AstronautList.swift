@@ -26,8 +26,8 @@ class AstronautList
         
         for person in peopleArray
         {
-            var newAstronaut: Astronaut = Astronaut(name: person["name"]! as String, craft: person["craft"]! as String)
-            astronautList.append(newAstronaut)
+            //var newAstronaut: Astronaut = Astronaut(name: person["name"]! as String, craft: person["craft"]! as String)
+            //astronautList.append(newAstronaut)
         }
         
         return astronautList

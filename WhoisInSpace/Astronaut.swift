@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 class Astronaut
 {
     var name: String
     var craft: String
+    var image: UIImage
     
-    init(name: String, craft: String)
+    init(name: String, craft: String, image: UIImage)
     {
         self.name = name
         self.craft = craft
-        
+        self.image = image
     }
 }
