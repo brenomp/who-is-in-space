@@ -14,11 +14,18 @@ class Astronaut
     var name: String
     var craft: String
     var image: UIImage
+    var astronautInfoDict: [NSDictionary]
     
-    init(name: String, craft: String, image: UIImage)
+    var kPersonalData = "personalData"
+    var kEducation = "education"
+    var kAwards = "awards"
+    var kExperience = "experience"
+    
+    init(name: String, craft: String, image: UIImage, astronautInfoDict: [NSDictionary])
     {
         self.name = name
         self.craft = craft
         self.image = image
+        self.astronautInfoDict = astronautInfoDict
     }
 }
