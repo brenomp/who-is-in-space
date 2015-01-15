@@ -131,7 +131,7 @@
                             <constraint firstItem="NqY-au-N82" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="-20" id="y6b-hf-I7B"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="UIr-T6-T3t"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Tab bar Earth icon" id="UIr-T6-T3t"/>
                     <connections>
                         <outlet property="durationLabel" destination="4jP-qa-ng4" id="u0D-5Q-lkc"/>
                         <outlet property="latitudeLabel" destination="Avt-Dq-78E" id="fqj-T2-S8a"/>
@@ -330,6 +330,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="71c-yk-Sge">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.34509803921568627" green="0.45490196078431372" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.1647058824" green="0.1764705882" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -345,7 +346,7 @@
         <scene sceneID="nCa-S3-AwC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ebn-ma-utw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Astronauts" id="oRw-Aq-Aoj"/>
+                    <tabBarItem key="tabBarItem" title="Astronauts" image="Tab bar Astronaut icon" id="oRw-Aq-Aoj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bn5-9O-11t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -364,6 +365,8 @@
     </scenes>
     <resources>
         <image name="Portrait - 6 Plus background" width="1242" height="2208"/>
+        <image name="Tab bar Astronaut icon" width="25" height="25"/>
+        <image name="Tab bar Earth icon" width="25" height="25"/>
         <image name="noImage" width="328" height="328"/>
         <image name="refresh" width="71" height="62"/>
     </resources>
