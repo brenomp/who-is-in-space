@@ -32,6 +32,8 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     var myLatitude: CLLocationDegrees?
     var myLongitude: CLLocationDegrees?
     
+    var currentNewsItems = [NewsItem]()
+    
     override init()
     {
         super.init()
@@ -42,7 +44,13 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     {
         // Does the initial setup for the app
         println("In The App Setup")
+        
+        // Creates the list of astronauts in space
         self.getAstronautList()
+        
+        // Creates the news feed
+        self.currentNewsItems = NetworkHelper.getNewsFromRssFeed("http://blogs.nasa.gov/spacestation/feed/")
+        
         if CLLocationManager.locationServicesEnabled()
         {
             self.locationManager.delegate = self

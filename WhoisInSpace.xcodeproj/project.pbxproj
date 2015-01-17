@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6331E44D1A65871C00FDB6F5 /* AstronautTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */; };
+		63393AD81A69D85E00FC4878 /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63393AD71A69D85E00FC4878 /* AEXML.swift */; };
+		63393ADA1A69DE8F00FC4878 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63393AD91A69DE8F00FC4878 /* NewsItem.swift */; };
 		63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167C1A532F8A00E65A09 /* Astronaut.swift */; };
 		63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167E1A5330BE00E65A09 /* AstronautList.swift */; };
 		63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A216801A533E5000E65A09 /* NetworkHelper.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautTableViewCell.swift; sourceTree = "<group>"; };
+		63393AD71A69D85E00FC4878 /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEXML.swift; sourceTree = "<group>"; };
+		63393AD91A69DE8F00FC4878 /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		63A2167C1A532F8A00E65A09 /* Astronaut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		63A2167E1A5330BE00E65A09 /* AstronautList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautList.swift; sourceTree = "<group>"; };
 		63A216801A533E5000E65A09 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63393AD61A69D81600FC4878 /* Thrid party libs */ = {
+			isa = PBXGroup;
+			children = (
+				63393AD71A69D85E00FC4878 /* AEXML.swift */,
+			);
+			name = "Thrid party libs";
+			sourceTree = "<group>";
+		};
 		63C609781A4B3B44004432F3 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +115,7 @@
 				63FD30C61A5460C100B00150 /* Controller */,
 				63FD30C51A5460BB00B00150 /* View */,
 				63FD30C41A5460B200B00150 /* Model */,
+				63393AD61A69D81600FC4878 /* Thrid party libs */,
 				63C609861A4B3B44004432F3 /* AppDelegate.swift */,
 				63C609901A4B3B44004432F3 /* Images.xcassets */,
 				63C609921A4B3B44004432F3 /* LaunchScreen.xib */,
@@ -151,6 +164,7 @@
 			children = (
 				63A2167C1A532F8A00E65A09 /* Astronaut.swift */,
 				63A2167E1A5330BE00E65A09 /* AstronautList.swift */,
+				63393AD91A69DE8F00FC4878 /* NewsItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,7 +290,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63C6098A1A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld in Sources */,
+				63393AD81A69D85E00FC4878 /* AEXML.swift in Sources */,
 				6331E44D1A65871C00FDB6F5 /* AstronautTableViewCell.swift in Sources */,
+				63393ADA1A69DE8F00FC4878 /* NewsItem.swift in Sources */,
 				63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */,
 				63B93F7C1A5ED41C0097354A /* AstronautViewController.swift in Sources */,
 				63B93F7A1A5ED3EA0097354A /* HomeViewController.swift in Sources */,

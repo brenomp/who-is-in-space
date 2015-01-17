@@ -40,6 +40,28 @@ class NetworkHelper
         
         task.resume()
     }
+    
+    class func getNewsFromRssFeed(url:String) -> [NewsItem]
+    {
+        var error:NSError?
+        
+        var xmlURL = NSURL(string: url)
+        var xmlData = NSData(contentsOfURL: xmlURL!)
+        
+        var newsItems = [NewsItem]()
+        
+        if let xmlDoc = AEXMLDocument(xmlData: xmlData!, error: &error)
+        {
+            for item in xmlDoc.rootElement["channel"]["item"].all
+            {
+                var newNewsItem = NewsItem(title: item["title"].value, link: item["link"].value, description: item["description"].value)
+                newsItems.append(newNewsItem)
+            }
+        }
+        return newsItems
+    }
+    
+    
 
 }
 
