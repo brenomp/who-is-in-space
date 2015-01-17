@@ -45,11 +45,14 @@ class NetworkHelper
     {
         var error:NSError?
         
+        // url with the xml data
         var xmlURL = NSURL(string: url)
         var xmlData = NSData(contentsOfURL: xmlURL!)
         
+        // list of news items to be sent out of the function
         var newsItems = [NewsItem]()
         
+        // checks to make sure there is data in the xmlDoc variable
         if let xmlDoc = AEXMLDocument(xmlData: xmlData!, error: &error)
         {
             for item in xmlDoc.rootElement["channel"]["item"].all

@@ -48,7 +48,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         // Creates the list of astronauts in space
         self.getAstronautList()
         
-        // Creates the news feed
+        // Creates the news feed array
         self.currentNewsItems = NetworkHelper.getNewsFromRssFeed("http://blogs.nasa.gov/spacestation/feed/")
         
         if CLLocationManager.locationServicesEnabled()

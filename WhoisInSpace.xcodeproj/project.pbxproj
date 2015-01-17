@@ -10,6 +10,8 @@
 		6331E44D1A65871C00FDB6F5 /* AstronautTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */; };
 		63393AD81A69D85E00FC4878 /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63393AD71A69D85E00FC4878 /* AEXML.swift */; };
 		63393ADA1A69DE8F00FC4878 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63393AD91A69DE8F00FC4878 /* NewsItem.swift */; };
+		6357BC4B1A69FBF3005FD481 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357BC4A1A69FBF3005FD481 /* NewsFeedViewController.swift */; };
+		6357BC4D1A6A0654005FD481 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357BC4C1A6A0654005FD481 /* WebView.swift */; };
 		63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167C1A532F8A00E65A09 /* Astronaut.swift */; };
 		63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167E1A5330BE00E65A09 /* AstronautList.swift */; };
 		63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A216801A533E5000E65A09 /* NetworkHelper.swift */; };
@@ -41,6 +43,8 @@
 		6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautTableViewCell.swift; sourceTree = "<group>"; };
 		63393AD71A69D85E00FC4878 /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEXML.swift; sourceTree = "<group>"; };
 		63393AD91A69DE8F00FC4878 /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		6357BC4A1A69FBF3005FD481 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		6357BC4C1A6A0654005FD481 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		63A2167C1A532F8A00E65A09 /* Astronaut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		63A2167E1A5330BE00E65A09 /* AstronautList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautList.swift; sourceTree = "<group>"; };
 		63A216801A533E5000E65A09 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				63B93F7D1A5ED4550097354A /* AatronautDetailViewController.swift */,
 				63B93F831A5F4CA80097354A /* AppLoader.swift */,
 				6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */,
+				6357BC4A1A69FBF3005FD481 /* NewsFeedViewController.swift */,
+				6357BC4C1A6A0654005FD481 /* WebView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 				TargetAttributes = {
 					63C609801A4B3B44004432F3 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = RUZ99L2VQ6;
 					};
 					63C609981A4B3B44004432F3 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -295,6 +302,7 @@
 				63393ADA1A69DE8F00FC4878 /* NewsItem.swift in Sources */,
 				63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */,
 				63B93F7C1A5ED41C0097354A /* AstronautViewController.swift in Sources */,
+				6357BC4D1A6A0654005FD481 /* WebView.swift in Sources */,
 				63B93F7A1A5ED3EA0097354A /* HomeViewController.swift in Sources */,
 				63B93F841A5F4CA80097354A /* AppLoader.swift in Sources */,
 				63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */,
@@ -302,6 +310,7 @@
 				63FD30C11A54609600B00150 /* WhoIsInSpaceAPI.swift in Sources */,
 				63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */,
 				63B93F7E1A5ED4550097354A /* AatronautDetailViewController.swift in Sources */,
+				6357BC4B1A69FBF3005FD481 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,9 +435,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WhoisInSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -437,9 +449,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WhoisInSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

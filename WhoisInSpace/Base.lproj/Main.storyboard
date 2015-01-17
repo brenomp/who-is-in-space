@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--News Feed View Controller-->
         <scene sceneID="NNp-P9-w89">
             <objects>
-                <viewController id="Yrv-ny-AtH" sceneMemberID="viewController">
+                <viewController id="Yrv-ny-AtH" customClass="NewsFeedViewController" customModule="WhoisInSpace" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z1O-k0-vHw"/>
                         <viewControllerLayoutGuide type="bottom" id="ldq-Zy-tVZ"/>
@@ -21,11 +21,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NEWS_CELL" id="Pro-Tt-Nid">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NEWS_CELL" textLabel="a0R-d7-Nej" detailTextLabel="WEq-zz-kZP" style="IBUITableViewCellStyleSubtitle" id="Pro-Tt-Nid">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pro-Tt-Nid" id="GUf-j5-hbp">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a0R-d7-Nej">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WEq-zz-kZP">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="NcI-jB-qlL" kind="show" id="kz6-df-gmW"/>
@@ -37,22 +51,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eh4-V8-gHh" firstAttribute="leading" secondItem="pXd-aR-tLt" secondAttribute="leadingMargin" constant="-16" id="6EI-jc-WVT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eh4-V8-gHh" secondAttribute="trailing" constant="-16" id="7ze-hN-8rs"/>
+                            <constraint firstItem="eh4-V8-gHh" firstAttribute="top" secondItem="pXd-aR-tLt" secondAttribute="topMargin" id="AXg-6G-qjC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eh4-V8-gHh" secondAttribute="trailing" constant="-16" id="HqV-rp-fMM"/>
+                            <constraint firstItem="eh4-V8-gHh" firstAttribute="leading" secondItem="pXd-aR-tLt" secondAttribute="leadingMargin" constant="-16" id="a4q-th-q9c"/>
+                            <constraint firstItem="eh4-V8-gHh" firstAttribute="bottom" secondItem="pXd-aR-tLt" secondAttribute="bottomMargin" id="alX-Iv-Cjc"/>
                             <constraint firstItem="eh4-V8-gHh" firstAttribute="top" secondItem="pXd-aR-tLt" secondAttribute="topMargin" id="jzq-UB-R2e"/>
                             <constraint firstItem="eh4-V8-gHh" firstAttribute="bottom" secondItem="pXd-aR-tLt" secondAttribute="bottomMargin" id="xQc-Rx-PZy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gjl-R0-rpF"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="newsFeedTableView" destination="eh4-V8-gHh" id="uUW-3R-DZc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uws-PG-vbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5235" y="-359"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View-->
         <scene sceneID="t3O-wu-5ZE">
             <objects>
-                <viewController id="NcI-jB-qlL" sceneMemberID="viewController">
+                <viewController id="NcI-jB-qlL" customClass="WebView" customModule="WhoisInSpace" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6of-vg-goN"/>
                         <viewControllerLayoutGuide type="bottom" id="aT4-aQ-exB"/>
@@ -74,6 +95,9 @@
                             <constraint firstItem="zw8-re-mw4" firstAttribute="leading" secondItem="y2T-eA-Omy" secondAttribute="leadingMargin" constant="-16" id="vhh-dF-mn8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="zw8-re-mw4" id="LZP-hO-a6i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OC-kP-m9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
