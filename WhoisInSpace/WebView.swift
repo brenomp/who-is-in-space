@@ -8,16 +8,18 @@
 
 import UIKit
 
-class WebView: UIViewController
+class WebView: UIViewController, UIWebViewDelegate
 {
 
     @IBOutlet var webView: UIWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var newsItem: NewsItem?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.webView.delegate = self
         self.loadWebPage()
         
     }
@@ -34,5 +36,17 @@ class WebView: UIViewController
         
         var request = NSURLRequest(URL: url!)
         self.webView.loadRequest(request)
+    }
+    
+    
+    func webViewDidStartLoad(webView: UIWebView)
+    {
+        self.activityIndicator.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView)
+    {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.hidesWhenStopped = true
     }
 }

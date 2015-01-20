@@ -2,17 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "75 iPhone 6 Plus tab bar icon astronaut.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "50 iphone 6 and 5 tab bar icon earth  Active.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "75 iPhone 6 Plus tab bar icon earth Active.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

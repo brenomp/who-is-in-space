@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--News Feed View Controller-->
+        <!--News Feed-->
         <scene sceneID="NNp-P9-w89">
             <objects>
                 <viewController id="Yrv-ny-AtH" customClass="NewsFeedViewController" customModule="WhoisInSpace" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <constraint firstItem="eh4-V8-gHh" firstAttribute="bottom" secondItem="pXd-aR-tLt" secondAttribute="bottomMargin" id="xQc-Rx-PZy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Gjl-R0-rpF"/>
+                    <navigationItem key="navigationItem" title="News Feed" id="Gjl-R0-rpF"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="newsFeedTableView" destination="eh4-V8-gHh" id="uUW-3R-DZc"/>
@@ -87,16 +87,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Pqw-ak-aAg">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="0.76862745098039209" green="0.31372549019607843" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1647058824" green="0.1764705882" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zw8-re-mw4" firstAttribute="top" secondItem="y2T-eA-Omy" secondAttribute="topMargin" id="KBN-I9-wi6"/>
+                            <constraint firstAttribute="centerY" secondItem="Pqw-ak-aAg" secondAttribute="centerY" constant="0.5" id="UHk-qa-yoS"/>
                             <constraint firstItem="zw8-re-mw4" firstAttribute="bottom" secondItem="y2T-eA-Omy" secondAttribute="bottomMargin" id="bmg-9W-BVM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zw8-re-mw4" secondAttribute="trailing" constant="-16" id="sf6-dN-lh8"/>
                             <constraint firstItem="zw8-re-mw4" firstAttribute="leading" secondItem="y2T-eA-Omy" secondAttribute="leadingMargin" constant="-16" id="vhh-dF-mn8"/>
+                            <constraint firstAttribute="centerX" secondItem="Pqw-ak-aAg" secondAttribute="centerX" constant="-0.5" id="x9E-50-eUg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Pqw-ak-aAg" id="6NW-dI-ogJ"/>
                         <outlet property="webView" destination="zw8-re-mw4" id="LZP-hO-a6i"/>
                     </connections>
                 </viewController>
@@ -466,7 +473,7 @@
         <scene sceneID="3Pv-1G-p03">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A1K-0w-eQA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" id="1ag-FK-PmO"/>
+                    <tabBarItem key="tabBarItem" title="News" image="Tab bar news icon" id="1ag-FK-PmO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dUO-jO-i6b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -487,6 +494,7 @@
         <image name="Portrait - 6 Plus background" width="1242" height="2208"/>
         <image name="Tab bar Astronaut icon" width="25" height="25"/>
         <image name="Tab bar Earth icon" width="25" height="25"/>
+        <image name="Tab bar news icon" width="25" height="25"/>
         <image name="noImage" width="328" height="328"/>
         <image name="refresh" width="71" height="62"/>
     </resources>
