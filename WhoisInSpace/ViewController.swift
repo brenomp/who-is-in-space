@@ -13,7 +13,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var issCurrentTimeLabel: UILabel!
+    
+    let whoIsInSpaceAPI = WhoIsInSpaceAPI()
+    
     var listOfAstronaut: [Astronaut] = []
+    var currentISSLocation : (Double, Double, String)?
+    var currentISSLongitude: Double?
+    var currentISSLatitude: Double?
+    var currentISSTime: String?
+    
     
     
     
@@ -22,24 +33,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        NetworkHelper.getJsonData(self.tableView, completionHandler: { (listOfPeople) -> (Void) in
-            self.listOfAstronaut = listOfPeople
-        })
+    
+        self.whoIsInSpaceAPI.setup(self.tableView)
+        self.whoIsInSpaceAPI.currentLoctionOfISS { (location) -> (Void) in
+            self.latitudeLabel.text = "\(location.latitude)"
+            self.longitudeLabel.text = "\(location.longitude)"
+            self.issCurrentTimeLabel.text = location.time
+        }
+        
         
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.listOfAstronaut.count
+        return self.whoIsInSpaceAPI.astroList.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as UITableViewCell
-        var data = self.listOfAstronaut[indexPath.row]
+        var data = self.whoIsInSpaceAPI.astroList[indexPath.row]
         cell.textLabel?.text = data.name as String
+        
+        
         
         return cell
     }
