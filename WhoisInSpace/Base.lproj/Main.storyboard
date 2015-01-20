@@ -82,6 +82,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sec" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-Sa-1xJ">
+                                <rect key="frame" x="323" y="375" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="aqz-eF-XkU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -89,10 +98,12 @@
                             <constraint firstAttribute="centerX" secondItem="bWG-CH-G5c" secondAttribute="centerX" constant="-3" id="7z2-Je-iRZ"/>
                             <constraint firstItem="TUp-1g-ZFQ" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="8" id="HUS-vp-FWl"/>
                             <constraint firstItem="dtC-hT-JgM" firstAttribute="top" secondItem="Lva-Ee-qLh" secondAttribute="bottom" constant="162" id="JL1-8o-bTP"/>
+                            <constraint firstItem="bvp-Sa-1xJ" firstAttribute="top" secondItem="Vgl-B6-YQJ" secondAttribute="bottom" constant="23" id="Jhq-vc-Xty"/>
                             <constraint firstAttribute="centerX" secondItem="Vgl-B6-YQJ" secondAttribute="centerX" constant="8.5" id="Lvy-eU-lnX"/>
                             <constraint firstAttribute="centerY" secondItem="bWG-CH-G5c" secondAttribute="centerY" constant="0.5" id="PFG-Fi-Q3y"/>
                             <constraint firstAttribute="centerY" secondItem="4jP-qa-ng4" secondAttribute="centerY" constant="-85.5" id="PlA-dt-flh"/>
                             <constraint firstItem="Vgl-B6-YQJ" firstAttribute="top" secondItem="bWG-CH-G5c" secondAttribute="bottom" constant="18" id="Vix-Q4-5qJ"/>
+                            <constraint firstItem="bvp-Sa-1xJ" firstAttribute="leading" secondItem="4jP-qa-ng4" secondAttribute="trailing" constant="8" id="Yct-9H-NUO"/>
                             <constraint firstAttribute="centerX" secondItem="5TE-Tg-HzQ" secondAttribute="centerX" constant="81" id="bcl-7g-pqr"/>
                             <constraint firstItem="5TE-Tg-HzQ" firstAttribute="top" secondItem="Vgl-B6-YQJ" secondAttribute="bottom" constant="16" id="dDp-n4-JLW"/>
                             <constraint firstAttribute="centerX" secondItem="TUp-1g-ZFQ" secondAttribute="centerX" constant="-3.5" id="eDq-3n-O4l"/>
