@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6331E44D1A65871C00FDB6F5 /* AstronautTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */; };
 		63A2167D1A532F8A00E65A09 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167C1A532F8A00E65A09 /* Astronaut.swift */; };
 		63A2167F1A5330BE00E65A09 /* AstronautList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2167E1A5330BE00E65A09 /* AstronautList.swift */; };
 		63A216811A533E5000E65A09 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A216801A533E5000E65A09 /* NetworkHelper.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautTableViewCell.swift; sourceTree = "<group>"; };
 		63A2167C1A532F8A00E65A09 /* Astronaut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		63A2167E1A5330BE00E65A09 /* AstronautList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronautList.swift; sourceTree = "<group>"; };
 		63A216801A533E5000E65A09 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				63B93F7B1A5ED41C0097354A /* AstronautViewController.swift */,
 				63B93F7D1A5ED4550097354A /* AatronautDetailViewController.swift */,
 				63B93F831A5F4CA80097354A /* AppLoader.swift */,
+				6331E44C1A65871C00FDB6F5 /* AstronautTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63C6098A1A4B3B44004432F3 /* WhoisInSpace.xcdatamodeld in Sources */,
+				6331E44D1A65871C00FDB6F5 /* AstronautTableViewCell.swift in Sources */,
 				63C609871A4B3B44004432F3 /* AppDelegate.swift in Sources */,
 				63B93F7C1A5ED41C0097354A /* AstronautViewController.swift in Sources */,
 				63B93F7A1A5ED3EA0097354A /* HomeViewController.swift in Sources */,

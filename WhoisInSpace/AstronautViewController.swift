@@ -8,28 +8,56 @@
 
 import UIKit
 
-class AstronautViewController: UIViewController {
+class AstronautViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
+{
 
-    override func viewDidLoad() {
+    @IBOutlet weak var astronautTableView: UITableView!
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.astronautTableView.dataSource = self
+        self.astronautTableView.delegate = self
+        
+        // Changes the scroll indicator color to white
+        self.astronautTableView.indicatorStyle = UIScrollViewIndicatorStyle.White
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return WhoIsInSpaceAPI.sharedInstance.astroList.count
     }
-    */
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        var cell = self.astronautTableView.dequeueReusableCellWithIdentifier("ASTRONAUT_CELL", forIndexPath: indexPath) as AstronautTableViewCell
+        var astronaut = WhoIsInSpaceAPI.sharedInstance.astroList[indexPath.row]
+        cell.profilePhotoImageView.image = astronaut.image
+        cell.nameLabel.text = astronaut.name
+        cell.craftLabel.text = astronaut.craft
+        cell.personalDataLabel.text = astronaut.astronautInfoDict[0]["personalData"] as? String
+        cell.personalDataLabel.numberOfLines = 0
+        
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "toAstronautDetailSegue"
+        {
+            if let indexPath = self.astronautTableView.indexPathForSelectedRow()?.row
+            {
+                let destVC = segue.destinationViewController as AatronautDetailViewController
+                destVC.currentAstronaut = WhoIsInSpaceAPI.sharedInstance.astroList[indexPath]
+            }
+        }
+    }
+
+
+    
+
+
 
 }
