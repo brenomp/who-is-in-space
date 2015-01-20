@@ -179,9 +179,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
             //println(self.astroDictionary)
             self.astroList = self.createListOfAstronauts(jsonData)
             
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                tableView.reloadData()
-//            })
+
         }
     }
     
