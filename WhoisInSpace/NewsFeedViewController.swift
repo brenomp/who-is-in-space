@@ -18,6 +18,7 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.newsFeedTableView.dataSource = self
         self.newsFeedTableView.delegate = self
+    
         
         println(WhoIsInSpaceAPI.sharedInstance.currentNewsItems)
         
@@ -33,8 +34,13 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         let cell = self.newsFeedTableView.dequeueReusableCellWithIdentifier("NEWS_CELL", forIndexPath: indexPath) as UITableViewCell
         var newsItem = WhoIsInSpaceAPI.sharedInstance.currentNewsItems[indexPath.row]
+        
+        // Sets color of the text in the cell
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.detailTextLabel?.textColor = UIColor.whiteColor()
+        
+        // Sets the lables in the cell
         cell.textLabel?.text = newsItem.title
-//        cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = newsItem.description
         
         

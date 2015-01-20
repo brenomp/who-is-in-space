@@ -16,8 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        println("In the App delegate")
+        
+        // Set global color of UIBarButtonItems
+        self.window?.tintColor = UIColor(red: 196.0/255.0, green: 80.0/255.0, blue: 66.0/255.0, alpha: 1.0)
+        
+        // Change Nav bar title color to white
+        // Note: might want to change the font to helvetica Neue
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         // Changes the status bar to white 
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
