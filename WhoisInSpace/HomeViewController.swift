@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     {
         super.viewDidLoad()
         
+        // Getting the users current location
         NSNotificationCenter.defaultCenter().addObserverForName(WhoIsInSpaceAPI.sharedInstance.kLocationDidUpdateNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (note) -> Void in
             if let userInfo = note.userInfo as? [String:Double]
             {
@@ -60,21 +61,23 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 
         }
    
-        
+        // Getting the current location of the international space station
         WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
-            
 
         }
         
-        
-
-
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
+            self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
+            self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
+        }
     }
 
-    
-    
 
     
     

@@ -124,8 +124,6 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     
 //MARK:
     
-    
-    
     func getMyLocation(completionHandler:(myCords:(longitude: String, latitude: String)) ->(Void))
     {
         
@@ -136,7 +134,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
             }
             else
             {
-                
+                println("Location not found")
             }
         })
     }
@@ -199,7 +197,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         
         for astronaut in astronautArray
         {
-            // This will break if new people come to the ISS 
+            // This will break if new people come to the ISS. This is not being added dynamicly
             switch astronaut["name"] as String
             {
                 case "Alexander Samokutyaev":
@@ -248,7 +246,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
                     astronautList.append(newAstronaut)
                 default:
                     var profileImage = UIImage(named: "noImage")
-                    var newAstronaut: Astronaut = Astronaut(name: "Jonny Astronaut" as String, craft: "The X-wing" as String, image: profileImage!,astronautInfoDict: self.createAstronautInfoDict("Some personal info",
+                    var newAstronaut: Astronaut = Astronaut(name: astronaut["name"]! as String, craft: "The X-wing" as String, image: profileImage!,astronautInfoDict: self.createAstronautInfoDict("Some personal info",
                         education: "some education",
                         awards: "some awards",
                         experience: "some experience"))
@@ -281,6 +279,23 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     private func createAstronautInfoDict(personalData: String, education: String, awards: String,  experience: String) -> [NSDictionary]
     {
         return [["personalData":personalData], ["education":education], ["awards":awards], ["experience":experience]]
+    }
+    
+    
+    // Creates an Alert
+    func createAlert(viewController: UIViewController) ->UIAlertController
+    {
+        let alertController = UIAlertController(title: "Test", message: "This is just a test", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            
+        }))
+        
+        
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//            viewController.presentViewController(alertController, animated: true, completion: nil)
+//        })
+        
+        return alertController
     }
     
     

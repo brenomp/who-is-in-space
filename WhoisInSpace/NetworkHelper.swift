@@ -36,6 +36,11 @@ class NetworkHelper
                 })
                 
             }
+            else
+            {
+                println(error.localizedDescription)
+            }
+            
         })
         
         task.resume()
