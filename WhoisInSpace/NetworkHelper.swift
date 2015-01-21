@@ -37,7 +37,6 @@ class NetworkHelper
                     let jsonDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         completionHandler(jsonData: jsonDictionary, networkError: noError)
-                        //tableView.reloadData()
                     })
                 case 400:
                     let myError = httpResponse.statusCode

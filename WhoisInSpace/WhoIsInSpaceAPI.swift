@@ -334,7 +334,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         switch code
         {
         case -1009:
-            return "NO Internet Connection, \"Who's In Space\" needs an internet connection to function. Please check you network connection"
+            return "No Internet Connection, \"Who's In Space\" needs an internet connection to function. Please check you network connection"
         case 400:
             return "bad request"
         case 401:
