@@ -18,9 +18,6 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         self.newsFeedTableView.dataSource = self
         self.newsFeedTableView.delegate = self
-    
-        
-        println(WhoIsInSpaceAPI.sharedInstance.currentNewsItems)
         
     }
     
