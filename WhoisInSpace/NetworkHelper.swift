@@ -13,7 +13,7 @@ class NetworkHelper
 {
     
     
-    class func downloadJSONData(baseURL: String, endPoint: String, completionHandler:(jsonData:NSDictionary) ->(Void))
+    class func downloadJSONData(baseURL: String, endPoint: String, completionHandler:(jsonData:NSDictionary, networkError: Int) ->(Void))
     {
         // Building the api url
         let baseURL = NSURL(string: baseURL)
@@ -24,21 +24,68 @@ class NetworkHelper
         let session = NSURLSession.sharedSession()
         
         let task = session.downloadTaskWithURL(fullApiURL!, completionHandler: { (location, response, error) -> Void in
+            
             if error == nil
             {
-                
-                let dataObject = NSData(contentsOfURL: location)
-                let jsonDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completionHandler(jsonData: jsonDictionary)
-                    //tableView.reloadData()
-                })
+                let httpResponse = response as NSHTTPURLResponse
+                // Checking HTTP Response codes
+                switch httpResponse.statusCode
+                {
+                case 200:
+                    let noError = 0
+                    let dataObject = NSData(contentsOfURL: location)
+                    let jsonDictionary = NSJSONSerialization.JSONObjectWithData(dataObject!, options: nil, error: nil) as NSDictionary
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: jsonDictionary, networkError: noError)
+                        //tableView.reloadData()
+                    })
+                case 400:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                case 401:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                case 403:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                case 404:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                case 500:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                case 550:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                default:
+                    let myError = httpResponse.statusCode
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completionHandler(jsonData: [:], networkError: httpResponse.statusCode)
+                    })
+                    
+                }
                 
             }
             else
             {
+                let noNetConnection = -1009
                 println(error.localizedDescription)
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completionHandler(jsonData: [:], networkError: noNetConnection)
+                })
             }
             
         })
@@ -54,19 +101,29 @@ class NetworkHelper
         var xmlURL = NSURL(string: url)
         var xmlData = NSData(contentsOfURL: xmlURL!)
         
-        // list of news items to be sent out of the function
-        var newsItems = [NewsItem]()
-        
-        // checks to make sure there is data in the xmlDoc variable
-        if let xmlDoc = AEXMLDocument(xmlData: xmlData!, error: &error)
+        if xmlData != nil
         {
-            for item in xmlDoc.rootElement["channel"]["item"].all
+            // list of news items to be sent out of the function
+            var newsItems = [NewsItem]()
+            
+            // checks to make sure there is data in the xmlDoc variable
+            if let xmlDoc = AEXMLDocument(xmlData: xmlData!, error: &error)
             {
-                var newNewsItem = NewsItem(title: item["title"].value, link: item["link"].value, description: item["description"].value)
-                newsItems.append(newNewsItem)
+                for item in xmlDoc.rootElement["channel"]["item"].all
+                {
+                    var newNewsItem = NewsItem(title: item["title"].value, link: item["link"].value, description: item["description"].value)
+                    newsItems.append(newNewsItem)
+                }
             }
+            return newsItems
         }
-        return newsItems
+            
+        else
+        {
+            println("ERROR: There was no xml data")
+            return []
+        }
+        
     }
     
     

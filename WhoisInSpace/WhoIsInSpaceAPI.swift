@@ -139,20 +139,33 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         })
     }
     
-    func getOverHeadPass(latitude: String, longitude: String, completionHandler:(dateTime:[NSDictionary]) ->(Void))
+    func getOverHeadPass(latitude: String, longitude: String, viewController: UIViewController, completionHandler:(dateTime:[NSDictionary]) ->(Void))
     {
         println("In the overHEAD pass method")
     
-        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-pass.json?lat=\(latitude)&lon=\(longitude)") { (jsonData) -> (Void) in
-           var responseArray = jsonData["response"] as [NSDictionary]
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-               completionHandler(dateTime: responseArray)
-            })
+        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-pass.json?lat=\(latitude)&lon=\(longitude)") { (jsonData, error) -> (Void) in
+            if error == 0
+            {
+               var responseArray = jsonData["response"] as [NSDictionary]
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                   completionHandler(dateTime: responseArray)
+                })
+            }
+            else
+            {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    // Presents The Alert to the user
+                    viewController.presentViewController(self.createAlert("\(error) ERROR:", message: self.handleErrors(error)), animated: true, completion: { () -> Void in
+                    
+                    })
+                })
+                
+            }
        }
     }
     
     // Gets the current locations from the api and then returns a tuple
-    func getCurrentLoctionOfISS(completionHandler:(location:(longitude: Double, latitude: Double, time: String)) ->(Void))
+    func getCurrentLoctionOfISS(viewController: UIViewController, completionHandler:(location:(longitude: Double, latitude: Double, time: String)) ->(Void))
     {
         var longitude: Double?
         var latitude: Double?
@@ -160,19 +173,31 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
         var currentLocation: (Double?, Double?, Int?)
         
         
-        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-now.json") { (jsonData) -> (Void) in
+        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "iss-now.json") { (jsonData, error) -> (Void) in
             
-            var position = jsonData["iss_position"] as NSDictionary
-            var unixTime = jsonData["timestamp"] as? Int
-            longitude = position["longitude"] as? Double
-            latitude = position["latitude"] as? Double
-            currentTime = self.dateStringFromUnixtime(unixTime!)
-            
-            
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completionHandler(location: (longitude!, latitude!, currentTime!))
-            })
+            if error == 0
+            {
+                var position = jsonData["iss_position"] as NSDictionary
+                var unixTime = jsonData["timestamp"] as? Int
+                longitude = position["longitude"] as? Double
+                latitude = position["latitude"] as? Double
+                currentTime = self.dateStringFromUnixtime(unixTime!)
+                
+                
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completionHandler(location: (longitude!, latitude!, currentTime!))
+                })
+            }
+            else
+            {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    // Presents The Alert to the user
+                    viewController.presentViewController(self.createAlert("\(error) ERROR:", message: self.handleErrors(error)), animated: true, completion: { () -> Void in
+                        
+                    })
+                })
+            }
         }
         
     }
@@ -180,10 +205,17 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     func getAstronautList()
     {
         // Downloads the Json Data from the api on a background thread and then when the data comes backs puts it back onto the main queue
-        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "astros.json") { (jsonData) -> (Void) in
-            self.astroDictionary = jsonData
-            //println(self.astroDictionary)
-            self.astroList = self.createListOfAstronauts(jsonData)
+        NetworkHelper.downloadJSONData("http://api.open-notify.org/", endPoint: "astros.json") { (jsonData, error) -> (Void) in
+            if error == 0
+            {
+                self.astroDictionary = jsonData
+                //println(self.astroDictionary)
+                self.astroList = self.createListOfAstronauts(jsonData)
+            }
+            else
+            {
+                println("Astronaut list could not be created")
+            }
             
 
         }
@@ -264,6 +296,7 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     
 //MARK: Helpers
     
+    
     // Formats a unix time into a human readable time
     func dateStringFromUnixtime(unixTime: Int) -> String
     {
@@ -284,19 +317,39 @@ class WhoIsInSpaceAPI: NSObject, CLLocationManagerDelegate
     
     
     // Creates an Alert
-    func createAlert(viewController: UIViewController) ->UIAlertController
+    func createAlert(title: String, message: String) -> UIAlertController
     {
-        let alertController = UIAlertController(title: "Test", message: "This is just a test", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             
         }))
         
-        
-//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//            viewController.presentViewController(alertController, animated: true, completion: nil)
-//        })
-        
         return alertController
+    }
+    
+//MARK: Error Handling
+    func handleErrors(code:Int) -> String
+    {
+        switch code
+        {
+        case -1009:
+            return "NO Internet Connection, \"Who's In Space\" needs an internet connection to function. Please check you network connection"
+        case 400:
+            return "bad request"
+        case 401:
+            return "unauthorized"
+        case 403:
+            return "forbidden"
+        case 404:
+            return "Server not Found"
+        case 500:
+            return "internal server error"
+        case 550:
+            return "permission denied"
+        default:
+            return "WHAT DID YOU DO?!?!?... THE APP HAS EXPLODED PLEASE RESTART"
+        }
     }
     
     

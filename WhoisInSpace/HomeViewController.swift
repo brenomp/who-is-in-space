@@ -17,9 +17,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var overHeadDateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     
-    let locationManager = CLLocationManager()
-    //let whosInSpaceApi = WhoIsInSpaceAPI()
-    
     var issCurrentLat: Double?
     var issCurrentLon: Double?
     var issCurrentTime: String?
@@ -47,7 +44,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
                     self.myLongitude = lon
                     
                     // I think this network call is called 3 or more times.  Not sure how to fix it.
-                    WhoIsInSpaceAPI.sharedInstance.getOverHeadPass("\(lat)", longitude: "\(lon)", completionHandler: { (dateTime) -> (Void) in
+                    WhoIsInSpaceAPI.sharedInstance.getOverHeadPass("\(lat)", longitude: "\(lon)", viewController: self ,completionHandler: { (dateTime) -> (Void) in
                         var riseTime = WhoIsInSpaceAPI.sharedInstance.dateStringFromUnixtime(dateTime[0]["risetime"]! as Int)
                         var duration = dateTime[0]["duration"]! as Int
                         self.overHeadDateLabel.text = "\(riseTime)"
@@ -62,20 +59,19 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
         }
    
         // Getting the current location of the international space station
-        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
+        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS(self, completionHandler: { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
-
-        }
-        
+        })
     }
     
     override func viewWillAppear(animated: Bool)
     {
-        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
+        // Getting the current location of the international space station
+        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS(self, completionHandler: { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
-        }
+        })
     }
 
 
@@ -84,12 +80,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate
 //MARK: IBActions
     @IBAction func refreshButtonPressed(sender: AnyObject)
     {
-        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS { (location) -> (Void) in
+        // Getting the current location of the international space station
+        WhoIsInSpaceAPI.sharedInstance.getCurrentLoctionOfISS(self, completionHandler: { (location) -> (Void) in
             self.latitudeLabel.text = self.formatDoubleString(location.latitude, precision: 4)
             self.longitudeLabel.text = self.formatDoubleString(location.longitude, precision: 4)
-            
-
-        }
+        })
     }
     
     
