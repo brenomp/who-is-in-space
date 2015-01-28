@@ -19,6 +19,14 @@ class NewsFeedViewController: UIViewController, UITableViewDataSource, UITableVi
         self.newsFeedTableView.dataSource = self
         self.newsFeedTableView.delegate = self
         
+//        self.newsFeedTableView.estimatedRowHeight = 44.0
+//        self.newsFeedTableView.rowHeight = UITableViewAutomaticDimension
+        
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        self.newsFeedTableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

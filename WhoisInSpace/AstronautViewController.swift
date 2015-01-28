@@ -23,6 +23,14 @@ class AstronautViewController: UIViewController, UITableViewDataSource, UITableV
         // Changes the scroll indicator color to white
         self.astronautTableView.indicatorStyle = UIScrollViewIndicatorStyle.White
         
+        self.astronautTableView.estimatedRowHeight = 70
+        self.astronautTableView.rowHeight = UITableViewAutomaticDimension
+        
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        self.astronautTableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
